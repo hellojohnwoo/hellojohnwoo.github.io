@@ -146,6 +146,206 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/27/Work-04-vsftpd-FTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Johnwoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnwoo's Engineering Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/27/Work-04-vsftpd-FTP/" class="post-title-link" itemprop="url">Work-04-vsftpd-FTP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-27 17:15:09 / Modified: 17:32:26" itemprop="dateCreated datePublished" datetime="2020-05-27T17:15:09+09:00">2020-05-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Developer-s-Work/" itemprop="url" rel="index"><span itemprop="name">Developer's Work</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Why-need-a-vsftpd"><a href="#Why-need-a-vsftpd" class="headerlink" title="Why need a vsftpd?"></a>Why need a vsftpd?</h1><ul>
+<li>サーバの構築とサーバプログラムをアップロード/ダウンロードする目的でvsftpdをインストールします。</li>
+</ul>
+<h1 id="What-is-vsftpd"><a href="#What-is-vsftpd" class="headerlink" title="What is vsftpd?"></a>What is vsftpd?</h1><ul>
+<li><p>vsftpdはファイル転送規約(File Transfer Protocol、FTP)でファイルを円滑にアップロード/ダウンロードするのが目的です。</p>
+</li>
+<li><p>例えば、マイコンピュータにあるサーバにファイルをアップロードしたり、サーバにあるファイルをマイコンピュータにダウンロードしたりするためです。 サーバプログラムをアップロードしたり、その他のファイルをアップロードするためにインストールして使用します。</p>
+</li>
+</ul>
+<h1 id="What-is-FTP"><a href="#What-is-FTP" class="headerlink" title="What is FTP?"></a>What is FTP?</h1><ul>
+<li><p>ネットワークに接続されたコンピュータ同士でデータを円滑に交換するための目的で開発されました。</p>
+</li>
+<li><p>簡単に例を挙げると、宅配便を必ず箱に入れて送ろうと規則を決めるようにパソコンのファイルも一つの約束をするのです。</p>
+<p>1 ) FTP install Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# rpm -qa vsftpd*</span><br></pre></td></tr></table></figure>
+
+<p>2 ) Intall FTP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# yum install vsftpd -y</span><br></pre></td></tr></table></figure>
+
+<p>3 ) FTP install Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# service vsftpd status</span><br></pre></td></tr></table></figure>
+
+<p>4 ) FTP Setting</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# vi &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable&#x3D;NO                 # anonymous user&#39;s connect check</span><br><span class="line">local_enable&#x3D;YES                    # anonymous user&#39;s connect enable</span><br><span class="line">write_enable&#x3D;YES                    # upload enable</span><br><span class="line">xferlog_enable&#x3D;YES                  # ファイル転送ログの残りを許可</span><br><span class="line">connect_from_port_20&#x3D;YES            # 20ポートの使用許容</span><br><span class="line">xferlog_file&#x3D;&#x2F;var&#x2F;log&#x2F;xferlog       # ファイル転送ログ位置設定</span><br><span class="line">#chroot_local_user&#x3D;YES              # ルートフォルダへのアクセス制限</span><br><span class="line">listen&#x3D;YES                          # vsftpdデーモンの動作方式指定(yes-&gt;standalone、no-&gt;xinted)</span><br><span class="line"></span><br><span class="line">local_root&#x3D;&#x2F;var&#x2F;www&#x2F;static          # 接続経路設定</span><br><span class="line">pam_service_name&#x3D;vsftpd</span><br><span class="line">userlist_enable&#x3D;YES</span><br><span class="line">tcp_wrappers&#x3D;YES</span><br><span class="line"></span><br><span class="line">listen_port&#x3D;45000                   # ファイル転送接続ポート設定</span><br><span class="line">port_enable&#x3D;YES</span><br><span class="line">pasv_enable&#x3D;YES</span><br><span class="line">ftp_data_port&#x3D;45001                 # ファイル転送データポート設定</span><br><span class="line">pasv_min_port&#x3D;45000</span><br><span class="line">pasv_max_port&#x3D;45001</span><br><span class="line">session_support&#x3D;YES</span><br><span class="line">userlist_enable&#x3D;YES                 # user list enable</span><br></pre></td></tr></table></figure>
+
+<p>5 ) FTP start &amp; start check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# service vsftpd start</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# netstat -anp | grep vsftpd</span><br></pre></td></tr></table></figure>
+
+<p>6 ) When FTP reboot, auto restart setting</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# chkconfig vsftpd on</span><br><span class="line">[root@centos ~]# chkconfig --list | grep vsftpd</span><br></pre></td></tr></table></figure>
+
+<p>7 ) TestUser add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# useradd testing</span><br><span class="line">[root@centos ~]# passwd testing</span><br></pre></td></tr></table></figure>
+
+<p>8 ) When Connect vsftpd, show this message</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Status:      Connecting to IP:PORT...</span><br><span class="line">Status:      Connection established, waiting for welcome message...</span><br><span class="line">Status:      Insecure server, it does not support FTP over TLS.</span><br><span class="line">Status:      Logged in</span><br><span class="line">Status:      Retrieving directory listing...</span><br><span class="line">Status:      Directory listing of &quot;...&#x2F;static&quot; successful</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/27/Work-03-Building-a-Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Johnwoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnwoo's Engineering Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/27/Work-03-Building-a-Server/" class="post-title-link" itemprop="url">Work-03-Building-a-Server</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-27 17:02:23 / Modified: 17:33:40" itemprop="dateCreated datePublished" datetime="2020-05-27T17:02:23+09:00">2020-05-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Developer-s-Work/" itemprop="url" rel="index"><span itemprop="name">Developer's Work</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基本設定および確認"><a href="#基本設定および確認" class="headerlink" title="基本設定および確認"></a>基本設定および確認</h1><ul>
+<li><p>一般のウィンドウやマックなどのグイ(GUI)環境はコンピューターのリソース(Resource)を多く使うようになります。<br>ですから、このような資源を最大限節約し、サーバ性能の最大化のために見にくいTextモードを利用することになります。</p>
+<h2 id="1-サーバー接続"><a href="#1-サーバー接続" class="headerlink" title="1. サーバー接続"></a>1. サーバー接続</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ssh -l ID -p Port IP</span><br><span class="line">code : ssh -l root -p 43232 123.155.157.1xx</span><br><span class="line">root@IP&#39;s password:</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>セキュアシェル(Secure Shell、SSH)はネットワーク上の他のコンピュータにログインしたり、遠隔システムで命令を実行し、他のシステムでファイルを複数できるようにするアプリケーションやプロトコルを指します。<br>強力な認証方法により、安全ではないネットワークで安全に通信できる機能を提供します。<br>セキュアシェル(SSH)は暗号化手法を使うため、通信が露出されたとしても理解できない暗号化された文字と考えられる。</p>
+<p>1 ) Linux Version Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# uname -a</span><br></pre></td></tr></table></figure>
+<p>2 ) CentOS Version Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# cat &#x2F;etc&#x2F;redhat-release</span><br></pre></td></tr></table></figure>
+<p>3 ) HardDisk Volume Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#df -h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Filesystem      Size  Used Avail Use%  Mounted on</span><br><span class="line">&#x2F;dev&#x2F;xvda1       50G  7.7G   39G  17%  &#x2F;</span><br><span class="line">tmpfs           935M     0  935M   0%  &#x2F;dev&#x2F;shm</span><br></pre></td></tr></table></figure>
+<p>4 ) Memory Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# free -m</span><br></pre></td></tr></table></figure>
+
+<p>5 ) CPU Check</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# cat &#x2F;proc&#x2F;cpuinfo | grep processor | wc -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#cat &#x2F;proc&#x2F;cpuinfo</span><br></pre></td></tr></table></figure>
+
+<p>6 ) Package List Update</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# yum update</span><br></pre></td></tr></table></figure>
+
+<p>7 ) System time Setting</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Tokyo &#x2F;etc&#x2F;localtime</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/27/Work-02-OS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,7 +371,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-27 16:42:34 / Modified: 16:55:21" itemprop="dateCreated datePublished" datetime="2020-05-27T16:42:34+09:00">2020-05-27</time>
+              <time title="Created: 2020-05-27 16:42:34 / Modified: 17:00:49" itemprop="dateCreated datePublished" datetime="2020-05-27T16:42:34+09:00">2020-05-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,8 +426,8 @@
 </li>
 </ul>
 <h1 id="Redhat系列の異なる2つのLinux"><a href="#Redhat系列の異なる2つのLinux" class="headerlink" title="Redhat系列の異なる2つのLinux"></a>Redhat系列の異なる2つのLinux</h1><ol>
-<li>Fedora:Redhatの先行OS、つまりRedhatの新技術を体験したいならFedoraを使えばいいです。</li>
-<li>CentOs:Redhatの以前のOS、つまりRedhatの安定的な技術をそのまま継承して使用します。<br>(実際に多くの大学や大手はCentOSで運営)</li>
+<li>Fedora : Redhatの先行OS、<br> Redhatの新技術を体験したいならFedoraを使えばいいです。</li>
+<li>CentOs : Redhatの以前のOS、<br> Redhatの安定的な技術をそのまま継承して使用します。<br>(実際に多くの大学や大手はCentOSで運営)</li>
 </ol>
 <ul>
 <li>ps. Linuxの奇数バージョンはDevelper用で、偶数バージョンは配布型です。</li>
@@ -956,209 +1156,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/12/Interview-Framework-Library/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Johnwoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Johnwoo's Engineering Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/12/Interview-Framework-Library/" class="post-title-link" itemprop="url">Interview Framework VS Library</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-12 19:49:41 / Modified: 20:09:00" itemprop="dateCreated datePublished" datetime="2020-05-12T19:49:41+09:00">2020-05-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Framework-VS-Library"><a href="#Framework-VS-Library" class="headerlink" title="Framework VS Library"></a>Framework VS Library</h1><ul>
-<li><p>結論 : 誰が誰を呼び出すかの違い(who calls who)</p>
-</li>
-<li><p>Frameworkではフレームワークコードが我がコードを呼び出し、</p>
-</li>
-<li><p>Libraryでは我がコードがライブラリを呼び出す。</p>
-<h3 id="Inversion-of-Control-IOC"><a href="#Inversion-of-Control-IOC" class="headerlink" title="Inversion of Control (IOC)"></a>Inversion of Control (IOC)</h3><ul>
-<li><p>JavaScriptフレームワークであるQueryを例に、<br>Documentが準備状態(document on ready)の時に我々が定義したコールバックを<br>呼び出すのはフレームワークである。<br>これはフレームワークが担うフレームワークの統制部分の流れである。</p>
-</li>
-<li><p>Framework Code : 統制の流れを定義</p>
-</li>
-<li><p>My Code : 行動を定義</p>
-</li>
-<li><p>Library Code : 行動を定義</p>
-</li>
-</ul>
-<h3 id="FrameworkとLibraryの違いはControlに関すること。"><a href="#FrameworkとLibraryの違いはControlに関すること。" class="headerlink" title="FrameworkとLibraryの違いはControlに関すること。"></a>FrameworkとLibraryの違いはControlに関すること。</h3><ul>
-<li>統制の流れ(flow of control)がその違いだ。<ul>
-<li>FrameworkはApplicationの流れをコントロールし、</li>
-<li>Libraryはそうではない。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="API-Application-Programming-Interface"><a href="#API-Application-Programming-Interface" class="headerlink" title="API (Application Programming Interface)"></a>API (Application Programming Interface)</h2><ul>
-<li>開発者が公に露出したメンバーを使って機能にアクセスし、<br>当該機能を具現するのに使われたコードを隠せるインターフェース。</li>
-</ul>
-<h1 id="Library-vs-API"><a href="#Library-vs-API" class="headerlink" title="Library vs API"></a>Library vs API</h1><ul>
-<li>Libraryはコンポーネントそのもの。</li>
-<li>APIはコンポーネントを活用する規約。</li>
-</ul>
-<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h4 id="SDK-System-Development-Kit"><a href="#SDK-System-Development-Kit" class="headerlink" title="SDK(System Development Kit)"></a>SDK(System Development Kit)</h4><ul>
-<li>ソフトウェア開発ツール集</li>
-<li>SDKの中には開発に役立つ開発ツールプログラム、デバッグプログラム、<br>文書、APIなどがある。</li>
-</ul>
-<h4 id="Software-Framework"><a href="#Software-Framework" class="headerlink" title="Software Framework"></a>Software Framework</h4><ul>
-<li>定義されたAPIを提供するSoftware libraryの母音</li>
-<li>ライブラリと違い、アプリケーションの枠組みと構造を決定するだけでなく、<br>その上に開発された開発者のコードを制御する。</li>
-</ul>
-<h4 id="Software-Library"><a href="#Software-Library" class="headerlink" title="Software Library"></a>Software Library</h4><ul>
-<li>コンピュータープログラムでよく使われる部分プログラムを集めたもの。</li>
-<li>静的、動的(リンク、ロード)ライブラリに分けられる。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/12/Diary-2020-05-12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Johnwoo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Johnwoo's Engineering Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/12/Diary-2020-05-12/" class="post-title-link" itemprop="url">Diary 2020-05-12</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-12 14:57:39 / Modified: 15:39:35" itemprop="dateCreated datePublished" datetime="2020-05-12T14:57:39+09:00">2020-05-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="現在勉強していること"><a href="#現在勉強していること" class="headerlink" title="現在勉強していること"></a>現在勉強していること</h2><h1 id="Goal-0-About-Me-Now"><a href="#Goal-0-About-Me-Now" class="headerlink" title="Goal 0. About Me, Now."></a>Goal 0. About Me, Now.</h1><ul>
-<li>Amazon Linux AMI + LAMP WebServerで、簡単なサーバ管理や<br>プロジェクトのマニュアル理解·作成程度が可能なレベルです。</li>
-<li>Java開発歴6ヶ月以上(Spring)<br>Python開発歴3ヶ月以上(Django, Tensorflow)</li>
-</ul>
-<h1 id="Goal-1-Infrastructure"><a href="#Goal-1-Infrastructure" class="headerlink" title="Goal 1. Infrastructure"></a>Goal 1. Infrastructure</h1><ul>
-<li><p>私はプログラマーとして開発(製造)だけに多くの時間を使いました。<br>しかしながら、サーバ運営、配布自動化、仮想化についての勉強が必要と考えました。<br>現在、知り合いのインフラエンジニアがら色々学んでいます。</p>
-<ol>
-<li>Linux - CentOS 6, Amazon Linux(AMI)</li>
-<li>AWS - with PHP, with Node.js</li>
-<li>CI - Jenkins, Circle CI, Amazon CodeBuild</li>
-<li>Terraform</li>
-<li>Docker</li>
-</ol>
-</li>
-</ul>
-<h1 id="Goal-2-Development"><a href="#Goal-2-Development" class="headerlink" title="Goal 2. Development"></a>Goal 2. Development</h1><ul>
-<li><p>Spring開発がメインでしたが、<br>これからは、もう少し多様なプログラミング言語を学習して、<br>素早く様々な案件に対応できるようにしたいと思います。</p>
-<ol>
-<li>JavaScript - Vue.js, Node.js</li>
-<li>Php - Laravel 7</li>
-<li>Python</li>
-<li>Spring Boot</li>
-</ol>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1228,7 +1225,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

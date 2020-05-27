@@ -146,6 +146,209 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/12/Interview-Framework-Library/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Johnwoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnwoo's Engineering Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/12/Interview-Framework-Library/" class="post-title-link" itemprop="url">Interview Framework VS Library</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-12 19:49:41 / Modified: 20:09:00" itemprop="dateCreated datePublished" datetime="2020-05-12T19:49:41+09:00">2020-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Framework-VS-Library"><a href="#Framework-VS-Library" class="headerlink" title="Framework VS Library"></a>Framework VS Library</h1><ul>
+<li><p>結論 : 誰が誰を呼び出すかの違い(who calls who)</p>
+</li>
+<li><p>Frameworkではフレームワークコードが我がコードを呼び出し、</p>
+</li>
+<li><p>Libraryでは我がコードがライブラリを呼び出す。</p>
+<h3 id="Inversion-of-Control-IOC"><a href="#Inversion-of-Control-IOC" class="headerlink" title="Inversion of Control (IOC)"></a>Inversion of Control (IOC)</h3><ul>
+<li><p>JavaScriptフレームワークであるQueryを例に、<br>Documentが準備状態(document on ready)の時に我々が定義したコールバックを<br>呼び出すのはフレームワークである。<br>これはフレームワークが担うフレームワークの統制部分の流れである。</p>
+</li>
+<li><p>Framework Code : 統制の流れを定義</p>
+</li>
+<li><p>My Code : 行動を定義</p>
+</li>
+<li><p>Library Code : 行動を定義</p>
+</li>
+</ul>
+<h3 id="FrameworkとLibraryの違いはControlに関すること。"><a href="#FrameworkとLibraryの違いはControlに関すること。" class="headerlink" title="FrameworkとLibraryの違いはControlに関すること。"></a>FrameworkとLibraryの違いはControlに関すること。</h3><ul>
+<li>統制の流れ(flow of control)がその違いだ。<ul>
+<li>FrameworkはApplicationの流れをコントロールし、</li>
+<li>Libraryはそうではない。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="API-Application-Programming-Interface"><a href="#API-Application-Programming-Interface" class="headerlink" title="API (Application Programming Interface)"></a>API (Application Programming Interface)</h2><ul>
+<li>開発者が公に露出したメンバーを使って機能にアクセスし、<br>当該機能を具現するのに使われたコードを隠せるインターフェース。</li>
+</ul>
+<h1 id="Library-vs-API"><a href="#Library-vs-API" class="headerlink" title="Library vs API"></a>Library vs API</h1><ul>
+<li>Libraryはコンポーネントそのもの。</li>
+<li>APIはコンポーネントを活用する規約。</li>
+</ul>
+<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h4 id="SDK-System-Development-Kit"><a href="#SDK-System-Development-Kit" class="headerlink" title="SDK(System Development Kit)"></a>SDK(System Development Kit)</h4><ul>
+<li>ソフトウェア開発ツール集</li>
+<li>SDKの中には開発に役立つ開発ツールプログラム、デバッグプログラム、<br>文書、APIなどがある。</li>
+</ul>
+<h4 id="Software-Framework"><a href="#Software-Framework" class="headerlink" title="Software Framework"></a>Software Framework</h4><ul>
+<li>定義されたAPIを提供するSoftware libraryの母音</li>
+<li>ライブラリと違い、アプリケーションの枠組みと構造を決定するだけでなく、<br>その上に開発された開発者のコードを制御する。</li>
+</ul>
+<h4 id="Software-Library"><a href="#Software-Library" class="headerlink" title="Software Library"></a>Software Library</h4><ul>
+<li>コンピュータープログラムでよく使われる部分プログラムを集めたもの。</li>
+<li>静的、動的(リンク、ロード)ライブラリに分けられる。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/12/Diary-2020-05-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Johnwoo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnwoo's Engineering Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/12/Diary-2020-05-12/" class="post-title-link" itemprop="url">Diary 2020-05-12</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-12 14:57:39 / Modified: 15:39:35" itemprop="dateCreated datePublished" datetime="2020-05-12T14:57:39+09:00">2020-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="現在勉強していること"><a href="#現在勉強していること" class="headerlink" title="現在勉強していること"></a>現在勉強していること</h2><h1 id="Goal-0-About-Me-Now"><a href="#Goal-0-About-Me-Now" class="headerlink" title="Goal 0. About Me, Now."></a>Goal 0. About Me, Now.</h1><ul>
+<li>Amazon Linux AMI + LAMP WebServerで、簡単なサーバ管理や<br>プロジェクトのマニュアル理解·作成程度が可能なレベルです。</li>
+<li>Java開発歴6ヶ月以上(Spring)<br>Python開発歴3ヶ月以上(Django, Tensorflow)</li>
+</ul>
+<h1 id="Goal-1-Infrastructure"><a href="#Goal-1-Infrastructure" class="headerlink" title="Goal 1. Infrastructure"></a>Goal 1. Infrastructure</h1><ul>
+<li><p>私はプログラマーとして開発(製造)だけに多くの時間を使いました。<br>しかしながら、サーバ運営、配布自動化、仮想化についての勉強が必要と考えました。<br>現在、知り合いのインフラエンジニアがら色々学んでいます。</p>
+<ol>
+<li>Linux - CentOS 6, Amazon Linux(AMI)</li>
+<li>AWS - with PHP, with Node.js</li>
+<li>CI - Jenkins, Circle CI, Amazon CodeBuild</li>
+<li>Terraform</li>
+<li>Docker</li>
+</ol>
+</li>
+</ul>
+<h1 id="Goal-2-Development"><a href="#Goal-2-Development" class="headerlink" title="Goal 2. Development"></a>Goal 2. Development</h1><ul>
+<li><p>Spring開発がメインでしたが、<br>これからは、もう少し多様なプログラミング言語を学習して、<br>素早く様々な案件に対応できるようにしたいと思います。</p>
+<ol>
+<li>JavaScript - Vue.js, Node.js</li>
+<li>Php - Laravel 7</li>
+<li>Python</li>
+<li>Spring Boot</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/10/Linux-Basic-02-Directory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,7 +588,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
