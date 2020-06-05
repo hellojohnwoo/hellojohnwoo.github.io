@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"hellojohnwoo.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Framework VS Library 結論 : 誰が誰を呼び出すかの違い(who calls who)  Frameworkではフレームワークコードが我がコードを呼び出し、  Libraryでは我がコードがライブラリを呼び出す。 Inversion of Control (IOC) JavaScriptフレームワークであるQueryを例に、Documentが準備状態(document on r">
+  <meta name="description" content="https:&#x2F;&#x2F;flask-docs-kr.readthedocs.io&#x2F;ko&#x2F;latest&#x2F; https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;flask&#x2F;index.htm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Interview Framework VS Library">
-<meta property="og:url" content="http://hellojohnwoo.github.io/2020/05/12/Interview-Framework-Library/index.html">
+<meta property="og:title" content="Flask-Document">
+<meta property="og:url" content="http://hellojohnwoo.github.io/2020/06/05/Flask-Document/index.html">
 <meta property="og:site_name" content="Johnwoo&#39;s Engineering Blog">
-<meta property="og:description" content="Framework VS Library 結論 : 誰が誰を呼び出すかの違い(who calls who)  Frameworkではフレームワークコードが我がコードを呼び出し、  Libraryでは我がコードがライブラリを呼び出す。 Inversion of Control (IOC) JavaScriptフレームワークであるQueryを例に、Documentが準備状態(document on r">
+<meta property="og:description" content="https:&#x2F;&#x2F;flask-docs-kr.readthedocs.io&#x2F;ko&#x2F;latest&#x2F; https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;flask&#x2F;index.htm">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-12T10:49:41.123Z">
-<meta property="article:modified_time" content="2020-05-12T11:09:00.728Z">
+<meta property="article:published_time" content="2020-06-05T13:30:00.982Z">
+<meta property="article:modified_time" content="2020-06-05T13:30:28.999Z">
 <meta property="article:author" content="Johnwoo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://hellojohnwoo.github.io/2020/05/12/Interview-Framework-Library/">
+<link rel="canonical" href="http://hellojohnwoo.github.io/2020/06/05/Flask-Document/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Interview Framework VS Library | Johnwoo's Engineering Blog</title>
+  <title>Flask-Document | Johnwoo's Engineering Blog</title>
   
 
 
@@ -151,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/05/12/Interview-Framework-Library/">
+    <link itemprop="mainEntityOfPage" href="http://hellojohnwoo.github.io/2020/06/05/Flask-Document/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Interview Framework VS Library
+          Flask-Document
         </h1>
 
         <div class="post-meta">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-12 19:49:41 / Modified: 20:09:00" itemprop="dateCreated datePublished" datetime="2020-05-12T19:49:41+09:00">2020-05-12</time>
+              <time title="Created: 2020-06-05 22:30:00 / Modified: 22:30:28" itemprop="dateCreated datePublished" datetime="2020-06-05T22:30:00+09:00">2020-06-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -183,7 +183,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -198,50 +198,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Framework-VS-Library"><a href="#Framework-VS-Library" class="headerlink" title="Framework VS Library"></a>Framework VS Library</h1><ul>
-<li><p>結論 : 誰が誰を呼び出すかの違い(who calls who)</p>
-</li>
-<li><p>Frameworkではフレームワークコードが我がコードを呼び出し、</p>
-</li>
-<li><p>Libraryでは我がコードがライブラリを呼び出す。</p>
-<h3 id="Inversion-of-Control-IOC"><a href="#Inversion-of-Control-IOC" class="headerlink" title="Inversion of Control (IOC)"></a>Inversion of Control (IOC)</h3><ul>
-<li><p>JavaScriptフレームワークであるQueryを例に、<br>Documentが準備状態(document on ready)の時に我々が定義したコールバックを<br>呼び出すのはフレームワークである。<br>これはフレームワークが担うフレームワークの統制部分の流れである。</p>
-</li>
-<li><p>Framework Code : 統制の流れを定義</p>
-</li>
-<li><p>My Code : 行動を定義</p>
-</li>
-<li><p>Library Code : 行動を定義</p>
-</li>
-</ul>
-<h3 id="FrameworkとLibraryの違いはControlに関すること。"><a href="#FrameworkとLibraryの違いはControlに関すること。" class="headerlink" title="FrameworkとLibraryの違いはControlに関すること。"></a>FrameworkとLibraryの違いはControlに関すること。</h3><ul>
-<li>統制の流れ(flow of control)がその違いだ。<ul>
-<li>FrameworkはApplicationの流れをコントロールし、</li>
-<li>Libraryはそうではない。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="API-Application-Programming-Interface"><a href="#API-Application-Programming-Interface" class="headerlink" title="API (Application Programming Interface)"></a>API (Application Programming Interface)</h2><ul>
-<li>開発者が公に露出したメンバーを使って機能にアクセスし、<br>当該機能を具現するのに使われたコードを隠せるインターフェース。</li>
-</ul>
-<h1 id="Library-vs-API"><a href="#Library-vs-API" class="headerlink" title="Library vs API"></a>Library vs API</h1><ul>
-<li>Libraryはコンポーネントそのもの。</li>
-<li>APIはコンポーネントを活用する規約。</li>
-</ul>
-<h2 id="ETC"><a href="#ETC" class="headerlink" title="ETC"></a>ETC</h2><h4 id="SDK-System-Development-Kit"><a href="#SDK-System-Development-Kit" class="headerlink" title="SDK(System Development Kit)"></a>SDK(System Development Kit)</h4><ul>
-<li>ソフトウェア開発ツール集</li>
-<li>SDKの中には開発に役立つ開発ツールプログラム、デバッグプログラム、<br>文書、APIなどがある。</li>
-</ul>
-<h4 id="Software-Framework"><a href="#Software-Framework" class="headerlink" title="Software Framework"></a>Software Framework</h4><ul>
-<li>定義されたAPIを提供するSoftware libraryの母音</li>
-<li>ライブラリと違い、アプリケーションの枠組みと構造を決定するだけでなく、<br>その上に開発された開発者のコードを制御する。</li>
-</ul>
-<h4 id="Software-Library"><a href="#Software-Library" class="headerlink" title="Software Library"></a>Software Library</h4><ul>
-<li>コンピュータープログラムでよく使われる部分プログラムを集めたもの。</li>
-<li>静的、動的(リンク、ロード)ライブラリに分けられる。</li>
-</ul>
+        <p><a href="https://flask-docs-kr.readthedocs.io/ko/latest/" target="_blank" rel="noopener">https://flask-docs-kr.readthedocs.io/ko/latest/</a></p>
+<p><a href="https://www.tutorialspoint.com/flask/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/flask/index.htm</a></p>
 
     </div>
 
@@ -257,13 +215,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/12/Diary-2020-05-12/" rel="prev" title="Diary 2020-05-12">
-      <i class="fa fa-chevron-left"></i> Diary 2020-05-12
+    <a href="/2020/06/04/Famous-Saying-2020-06-04/" rel="prev" title="Famous-Saying-2020-06-04">
+      <i class="fa fa-chevron-left"></i> Famous-Saying-2020-06-04
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/12/Self-Review-2020-05-12/" rel="next" title="Self Review 2020-05-12">
-      Self Review 2020-05-12 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -322,7 +277,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Framework-VS-Library"><span class="nav-number">1.</span> <span class="nav-text">Framework VS Library</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inversion-of-Control-IOC"><span class="nav-number">1.0.1.</span> <span class="nav-text">Inversion of Control (IOC)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FrameworkとLibraryの違いはControlに関すること。"><span class="nav-number">1.0.2.</span> <span class="nav-text">FrameworkとLibraryの違いはControlに関すること。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Application-Programming-Interface"><span class="nav-number">1.1.</span> <span class="nav-text">API (Application Programming Interface)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Library-vs-API"><span class="nav-number">2.</span> <span class="nav-text">Library vs API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ETC"><span class="nav-number">2.1.</span> <span class="nav-text">ETC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDK-System-Development-Kit"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">SDK(System Development Kit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Software-Framework"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">Software Framework</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Software-Library"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">Software Library</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
